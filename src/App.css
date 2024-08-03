@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.Icon-Home {
+  max-width: 200px;
+}

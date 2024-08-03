@@ -12,7 +12,7 @@ function Home() {
       <div className="row row-cols-2 row-cols-md-2 g-4 m-3 text-center">
         <div className="col">
           <a className="nav-link" href="/login"><div className="card">
-            <img src={Login} className="img-fluid" alt="..."></img>
+            <img src={Login} className="img-fluid Home-Icon" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">Login</h5>
             </div>
