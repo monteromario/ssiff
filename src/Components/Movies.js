@@ -64,7 +64,7 @@ useEffect(() => {
     : 
             <div>
             <div className="m-5 d-flex justify-content-center">
-            <img src={spinner} className="App-spinner" alt="loading" alt="loading"/>
+            <img src={spinner} className="App-spinner" alt="loading"/>
             </div>
             <div className="m-5 d-flex justify-content-center">
                 <p>
