@@ -1,16 +1,16 @@
 import Nav from './Nav';
 import '../App.css';
 import React, { useState, useEffect } from 'react';
-import axios, * as others from 'axios';
+// import axios, * as others from 'axios';
 import data from '../data.json'
 import spinner from '../spinner.svg'
 import dots from '../dots.svg'
 
 
 // let baseUrl = 'https://imdb146.p.rapidapi.com/v1/title/'
-let baseUrl = 'https://www.omdbapi.com/'
-let apiKey = 'af474d0b'
-let movieId = 'tt6263850'
+// let baseUrl = 'https://www.omdbapi.com/'
+// let apiKey = 'af474d0b'
+// let movieId = 'tt6263850'
 
 function Movies() {
 
@@ -59,12 +59,12 @@ useEffect(() => {
       <p className="m-3">{movie.Title}</p> 
       <p className="m-3">{movie.Director}</p> 
       <p className="m-3">{movie.Runtime}</p>
-      <img src={movie.Poster} className="m-3 card h-100" />
+      <img src={movie.Poster} className="m-3 card h-100" alt={movie.Title}/>
       </div>
     : 
             <div>
             <div className="m-5 d-flex justify-content-center">
-            <img src={spinner} className="App-spinner" alt="loading" />
+            <img src={spinner} className="App-spinner" alt="loading" alt="loading"/>
             </div>
             <div className="m-5 d-flex justify-content-center">
                 <p>
