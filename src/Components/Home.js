@@ -23,7 +23,7 @@ function Home() {
         <a className="nav-link" href="/calendar"><div className="card">
             <img src={Calendar} className="card-img-top py-3" alt="..."></img>
             <div className="card-body">
-              <h5 className="card-title">Calendar</h5>
+              <h5 className="card-title">Calendario</h5>
             </div>
           </div>
             </a>
@@ -32,7 +32,7 @@ function Home() {
         <a className="nav-link" href="/movies"><div className="card">
             <img src={Movies} className="card-img-top p-3" alt="..."></img>
             <div className="card-body">
-              <h5 className="card-title">Movies</h5>
+              <h5 className="card-title">Películas</h5>
             </div>
           </div>
             </a>
@@ -41,7 +41,7 @@ function Home() {
         <a className="nav-link" href="/maps"><div className="card">
             <img src={Map} className="card-img-top" alt="..."></img>
             <div className="card-body">
-              <h5 className="card-title">Maps</h5>
+              <h5 className="card-title">Mapas</h5>
             </div>
           </div>
             </a>
