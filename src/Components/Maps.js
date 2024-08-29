@@ -1,10 +1,34 @@
 import Nav from './Nav';
 import '../App.css';
+import React, { useState, useEffect } from 'react';
+import spinner from '../spinner.svg'
+import dots from '../dots.svg'
 
 function Maps() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {  
+    setTimeout(() => {
+      setLoading(false)
+    }, "2000");
+  }, []);
+
   return (
     <div><Nav />
         <span className="m-3"><i className="fa-solid fa-circle-info"></i> You're @ Maps</span>
+        { loading ? 
+          <div>
+          <div className="m-5 d-flex justify-content-center">
+          <img src={spinner} className="App-spinner" alt="loading"/>
+          </div>
+          <div className="m-5 d-flex justify-content-center">
+              <p>
+                  <strong>loading contents</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
+              </p>
+          </div>
+          </div>
+         : 
         <div className="card-group m-3">
           <div className="card">
             <div className="card-body">
@@ -37,6 +61,7 @@ function Maps() {
             </div>
           </div>
         </div>
+      }
     </div>
   );
 }

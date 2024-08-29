@@ -11,15 +11,6 @@ function Home() {
     <p className="m-3">You're @ Home</p>
       <div className="row row-cols-2 row-cols-md-2 g-4 m-3 text-center">
         <div className="col">
-          <a className="nav-link" href="/login"><div className="card">
-            <img src={Login} className="img-fluid Home-Icon" alt="..."></img>
-            <div className="card-body">
-              <h5 className="card-title">Login</h5>
-            </div>
-          </div>
-          </a>
-        </div>
-        <div className="col">
         <a className="nav-link" href="/calendar"><div className="card">
             <img src={Calendar} className="card-img-top py-3" alt="..."></img>
             <div className="card-body">
@@ -45,6 +36,15 @@ function Home() {
             </div>
           </div>
             </a>
+        </div>
+        <div className="col">
+          <a className="nav-link" href="/login"><div className="card">
+            <img src={Login} className="img-fluid Home-Icon" alt="..."></img>
+            <div className="card-body">
+              <h5 className="card-title">Login</h5>
+            </div>
+          </div>
+          </a>
         </div>
       </div>
     </div>

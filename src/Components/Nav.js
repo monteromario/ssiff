@@ -13,10 +13,11 @@ function Nav() {
     </button>
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
-        <a className="nav-link active" aria-current="page" href="/login">Login</a>
-        <a className="nav-link" href="./calendar">Calendar</a>
-        <a className="nav-link" href="./movies">Movies</a>
-        <a className="nav-link" href="./maps">Maps</a>
+        <a className="nav-link active" aria-current="page" href="./">Inicio</a>
+        <a className="nav-link" href="./calendar">Calendario</a>
+        <a className="nav-link" href="./movies">Películas</a>
+        <a className="nav-link" href="./maps">Mapas</a>
+        <a className="nav-link" href="./login">Login</a>
       </div>
     </div>
   </div>
