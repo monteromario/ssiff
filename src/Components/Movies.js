@@ -1,70 +1,60 @@
 import Nav from './Nav';
 import '../App.css';
 import React, { useState, useEffect } from 'react';
-// import axios, * as others from 'axios';
 import data from '../data.json'
 import spinner from '../spinner.svg'
 import dots from '../dots.svg'
 
-
-// let baseUrl = 'https://imdb146.p.rapidapi.com/v1/title/'
-// let baseUrl = 'https://www.omdbapi.com/'
-// let apiKey = 'af474d0b'
-// let movieId = 'tt6263850'
-// https://www.omdbapi.com/?i=tt23468450&apikey=af474d0b
-
 function Movies() {
 
-  const [movies, setMovies] = useState(null);
   const urlPrefix = "https://www.imdb.com/title/"
-/*
-  useEffect(() => {  
-      axios.get(baseUrl, {
-        headers: {
-            'X-RapidAPI-Host': 'imdb146.p.rapidapi.com',
-            'X-RapidAPI-Key': '76c5653635msh335a6b889d0bb76p153645jsn9f338c6e4b08'
-        },
-        params: {
-          id: 'tt14225838'
-        }
-    })
-    .then((res) => setMovie(res.data))
-    .catch((err) => console.error(err));
-    }, []);
-*/
 
-/*
-  useEffect(() => {  
-    axios.get(baseUrl, {
-      headers: {},
-      params: {
-        i: movieId,
-        apikey: apiKey
-      }
-  })
-  .then((res) => setMovie(res.data))
-  .catch((err) => console.error(err));
-  }, []);
-*/
+  const [movies, setMovies] = useState(null);
+  const [filter, setFilter] = useState(null);
+
+  let filterMovies = (e) => {
+    let text = e.target.value
+    if (text.length === 0) {
+      getAllMovies()
+    } else {
+      setMovies(movies.filter((movie) => movie.Title.toLowerCase().includes(text.toLowerCase())))
+      setFilter(text)
+    }
+  }
+
+  let getAllMovies = () => {
+    if (filter) {
+    } else {
+      setMovies(data.sort(function(a, b){
+        if (a.Title < b.Title) {
+          return -1;
+        }
+        if (a.Title > b.Title) {
+          return 1;
+        }
+        return 0;
+      }))
+    }
+  }
 
 useEffect(() => {  
   setTimeout(() => {
-    setMovies(data.sort(function(a, b){
-      //return a.DayID - b.DayID;
-      if (a.Title < b.Title) {
-        return -1;
-      }
-      if (a.Title > b.Title) {
-        return 1;
-      }
-      return 0;
-  }));
+    getAllMovies()
   }, "1000");
 }, []);
 
   return (
     <div><Nav />
     <span className="m-3"><i className="fa-solid fa-circle-info"></i> You're @ Movies</span>
+    <form className="d-flex m-3" role="search">
+        <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" onChange={filterMovies}/>
+        { filter ? 
+        <button className="btn btn-dark" type="submit">Borrar</button>
+        :
+        <div className="btn btn-dark" type="submit">Buscar</div>
+        }
+      </form>
+      { movies ? movies.length == '0' ? <span className="m-3">No hay resultados. <a href="?">Busca de nuevo.</a></span> : <></> : <></> }
     { movies ? 
       <div className="card-group m-3">
       { movies.map((movie) => (
