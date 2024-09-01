@@ -52,7 +52,6 @@ function Calendar() {
   let scrollTo = (position) => {
     if (document.querySelector('#'+position)) {
       document.querySelector('#'+position).scrollIntoView();
-      console.log('scrolled to '+position)
     } else {
       console.log('dom not ready to scroll')
     }
@@ -82,8 +81,18 @@ function Calendar() {
 
   return (
     <div><Nav />
-    <span className="m-3"><i className="fa-solid fa-circle-info"></i> You're @ Calendar</span><br/>
     <span className="m-3"><i className="fa-solid fa-circle-info"></i> Today: { new Date().toLocaleDateString("es-ES") } ({ dayOfYear })</span>
+    <div className="mx-2 mt-2 d-flex justify-content-evenly">
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#one">D1</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#two">D2</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#three">D3</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#four">D4</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#five">D5</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#six">D6</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#seven">D7</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#eight">D8</a>
+    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#nine">D9</a>
+    </div>
     { !days ? 
   <div>
   <div className="m-5 d-flex justify-content-center">
@@ -91,7 +100,7 @@ function Calendar() {
   </div>
   <div className="m-5 d-flex justify-content-center">
       <p>
-          <strong>loading contents</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
+          <strong>cargando datos</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
       </p>
   </div>
   </div>
@@ -131,41 +140,5 @@ function Calendar() {
     </div>
   );
 }
-
-/* { !movies ? 
-  <div>
-  <div className="m-5 d-flex justify-content-center">
-  <img src={spinner} className="App-spinner" alt="loading"/>
-  </div>
-  <div className="m-5 d-flex justify-content-center">
-      <p>
-          <strong>loading contents</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
-      </p>
-  </div>
-  </div>
-: 
-  <div className="card-group m-3">
-  { movies.filter(movie => movie.DayID === "01").map((movie) => (
-  <div className="card border-dark mb-4" key={movie.imdbID}>
-    <div className="card-header"><i className="fa-regular fa-clock"></i> <b>{movie.Time}</b></div>
-    <div className="row m-1">
-    <h1 className="card-title">{movie.Title}</h1>
-    </div>
-    <div className="row m-1">
-      <div className="col-4"><img src={movie.Poster} className="card-img-top" alt={movie.Title}/></div>
-      <div className="col-8 lh-1">
-      <p className="card-text"><i className="fa-solid fa-clapperboard"></i> {movie.Director}</p>
-      <p className="card-text"><i className="fa-solid fa-tag"></i> {movie.Section}</p>
-      <p className="card-text"><i className="fa-solid fa-stopwatch"></i> {movie.Runtime}</p>
-      <p className="card-text"><i className="fa-solid fa-school-flag"></i> {movie.Location}</p>
-      </div>
-    </div>
-    <div className="row m-1 pb-2">
-    <small className="text-muted"><em>{movie.Plot} </em><a href={urlPrefix+movie.imdbID} className="ml-5"><i className="fa-solid fa-up-right-from-square"></i></a></small>
-    </div>
-  </div>
-  )) }
-  </div>
-} */
 
 export default Calendar;

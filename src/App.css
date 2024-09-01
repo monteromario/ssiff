@@ -47,3 +47,11 @@
 .Icon-Home {
   max-width: 200px;
 }
+
+.transp {
+  opacity: 0.5;
+}
+
+.chip {
+  text-decoration: none;
+}

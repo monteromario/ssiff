@@ -11,6 +11,8 @@ function Movies() {
 
   const [movies, setMovies] = useState(null);
   const [filter, setFilter] = useState(null);
+  const [sections, setSections] = useState(null);
+  const [filteredSections, setFilteredSections] = useState(null);
 
   let filterMovies = (e) => {
     let text = e.target.value
@@ -22,9 +24,31 @@ function Movies() {
     }
   }
 
-  let getAllMovies = () => {
-    if (filter) {
+  let filterSections = (e) => {
+    let text = e.target.id
+    if (text.length === 0) {
+      getAllMovies()
     } else {
+      setMovies(movies.filter((movie) => movie.Section.toLowerCase().includes(text.toLowerCase())))
+      setFilteredSections(text)
+    }
+  }
+
+  let getSections = (data) => {
+    let uniq = (a) => {
+      return Array.from(new Set(a));
+    }
+    let push = (array) => {
+      let values = []
+      array.forEach(element => {
+        values.push(element.Section)
+      });
+      return values
+    }
+    setSections(uniq(push(data)))
+  }
+
+  let getAllMovies = () => {
       setMovies(data.sort(function(a, b){
         if (a.Title < b.Title) {
           return -1;
@@ -34,18 +58,18 @@ function Movies() {
         }
         return 0;
       }))
-    }
+    getSections(data)
   }
 
 useEffect(() => {  
   setTimeout(() => {
     getAllMovies()
+    getSections(data)
   }, "1000");
 }, []);
 
   return (
     <div><Nav />
-    <span className="m-3"><i className="fa-solid fa-circle-info"></i> You're @ Movies</span>
     <form className="d-flex m-3" role="search">
         <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" onChange={filterMovies}/>
         { filter ? 
@@ -53,8 +77,11 @@ useEffect(() => {
         :
         <div className="btn btn-dark" type="submit">Buscar</div>
         }
-      </form>
-      { movies ? movies.length == '0' ? <span className="m-3">No hay resultados. <a href="?">Busca de nuevo.</a></span> : <></> : <></> }
+    </form>
+    <div className="mx-2 mt-2 d-flex justify-content-evenly">
+          { sections ? !filteredSections ? sections.map((section) => ( <span className="badge rounded-pill text-bg-dark mx-1 chip" onClick={filterSections} key={section} id={section}>{section}</span> )) : <span><small><i className="fa-solid fa-filter"></i></small> {filteredSections} <a href="?" className="badge rounded-pill text-bg-dark mx-1 chip">Ver todas las secciones</a></span> : <></>}
+    </div>
+      { movies ? movies.length == '0' ? <div className="m-3"><span className="my-3">No hay resultados. <a href="?">Busca de nuevo.</a></span></div> : <></> : <></> }
     { movies ? 
       <div className="card-group m-3">
       { movies.map((movie) => (
@@ -85,7 +112,7 @@ useEffect(() => {
       </div>
       <div className="m-5 d-flex justify-content-center">
           <p>
-              <strong>loading contents</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
+              <strong>cargando datos</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
           </p>
       </div>
       </div>

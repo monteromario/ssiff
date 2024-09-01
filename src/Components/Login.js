@@ -62,7 +62,7 @@ function Login() {
               <label htmlFor="password" className="form-label">Contraseña</label>
               <input type="password" className="form-control" id="password" autoComplete="password" required/>
             </div>
-            <button type="submit" className="btn btn-primary">Acceder</button>
+            <button type="submit" className="btn btn-dark">Acceder</button>
           </form>
           </div>
         :
