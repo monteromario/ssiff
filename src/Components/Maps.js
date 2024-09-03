@@ -16,7 +16,6 @@ function Maps() {
 
   return (
     <div><Nav />
-        <span className="m-3"><i className="fa-solid fa-circle-info"></i> You're @ Maps</span>
         { loading ? 
           <div>
           <div className="m-5 d-flex justify-content-center">
@@ -29,7 +28,14 @@ function Maps() {
           </div>
           </div>
          : 
+         <div>
+         <div className="mx-2 mt-2 d-flex justify-content-evenly">
+          <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#casa"><i className="fa-solid fa-house"></i> Casa</a>
+          <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#theatres"><i className="fa-solid fa-film"></i> Cines</a>
+          <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#food"><i className="fa-solid fa-utensils"></i> Restaurantes</a>
+        </div>
         <div className="card-group m-3">
+          <div id="home"></div>
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Casa</h5>
@@ -40,6 +46,7 @@ function Maps() {
               <small className="text-muted"><a href="https://www.google.es/maps/dir//Getaria+Kalea,+6,+20005+Donostia,+Gipuzkoa/@43.3187793,-1.98382,16z/data=!4m18!1m8!3m7!1s0xd51a5511bc590cb:0xcca9c564d3150bf4!2sGetaria+Kalea,+6,+20005+Donostia,+Gipuzkoa!3b1!8m2!3d43.3187793!4d-1.9812451!16s%2Fg%2F11bw44ky0k!4m8!1m0!1m5!1m1!1s0xd51a5511bc590cb:0xcca9c564d3150bf4!2m2!1d-1.9812451!2d43.3187793!3e3?entry=ttu" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame a casa</a></small>
             </div>
           </div>
+          <div id="theatres"></div>
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Kursaal</h5>
@@ -60,6 +67,28 @@ function Maps() {
               <small className="text-muted"><a href="https://www.google.es/maps/dir//Teatro+Victoria+Eugenia,+Argentinar+Errepublika,+2,+20004+Donostia-San+Sebastian,+Gipuzkoa/@43.3227161,-1.9832394,16z/data=!4m17!1m7!3m6!1s0xd51a54fd1b59fe5:0x1b38bb4dc31105de!2sTeatro+Victoria+Eugenia!8m2!3d43.3227161!4d-1.9806645!16s%2Fg%2F1225dxdy!4m8!1m0!1m5!1m1!1s0xd51a54fd1b59fe5:0x1b38bb4dc31105de!2m2!1d-1.9807049!2d43.3226997!3e3?entry=ttu" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Victoria Eugenia</a></small>
             </div>
           </div>
+          <div id="food"></div>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Ramuntxo Berri Resturante</h5>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.5709601135163!2d-1.9803279240755685!3d43.32324007111961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a545423cdcf5%3A0x8118f2eb90133578!2sRamuntxo%20Berri%20Resturante!5e0!3m2!1ses!2ses!4v1725297342319!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="kursaal"></iframe>
+              <p className="card-text"><small>Peña y Goñi Kalea, 10, 20002 Donostia, Gipuzkoa</small></p>
+            </div>
+            <div className="card-footer text-center">
+              <small className="text-muted"><a href="https://www.google.es/maps/dir//Ramuntxo+Berri+Resturante,+Pe%C3%B1a+y+Go%C3%B1i+Kalea,+10,+20002+Donostia,+Gipuzkoa/@43.3232401,-1.9803279,623m/data=!3m1!1e3!4m17!1m7!3m6!1s0xd51a545423cdcf5:0x8118f2eb90133578!2sRamuntxo+Berri+Resturante!8m2!3d43.3232401!4d-1.977753!16s%2Fg%2F1q5bn7fml!4m8!1m0!1m5!1m1!1s0xd51a545423cdcf5:0x8118f2eb90133578!2m2!1d-1.977753!2d43.3232401!3e2?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Ramuntxo Berri</a></small>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Restaurante Gandarias</h5>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5805.0671282656685!2d-1.9883584240755174!3d43.32402277111958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a54c4a671fb5%3A0xdc7e07e1ca483ca8!2sRestaurante%20Gandarias!5e0!3m2!1ses!2ses!4v1725297439418!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="kursaal"></iframe>
+              <p className="card-text"><small>31 de Agosto Kalea, 23, 20003 Donostia, Gipuzkoa</small></p>
+            </div>
+            <div className="card-footer text-center">
+              <small className="text-muted"><a href="https://www.google.es/maps/dir//Restaurante+Gandarias,+31+de+Agosto+Kalea,+23,+20003+Donostia,+Gipuzkoa/@43.3240228,-1.9883584,16z/data=!4m17!1m7!3m6!1s0xd51a54c4a671fb5:0xdc7e07e1ca483ca8!2sRestaurante+Gandarias!8m2!3d43.3240228!4d-1.9857835!16s%2Fg%2F1tjmfzvz!4m8!1m0!1m5!1m1!1s0xd51a54c4a671fb5:0xdc7e07e1ca483ca8!2m2!1d-1.9857871!2d43.3240168!3e2?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Restaurante Gandarias</a></small>
+            </div>
+          </div>
+        </div>
         </div>
       }
     </div>
@@ -67,5 +96,3 @@ function Maps() {
 }
 
 export default Maps;
-
-<iframe src="" width="400" height="300" style="border:0;" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>

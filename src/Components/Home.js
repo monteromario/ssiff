@@ -124,7 +124,7 @@ function Home() {
         <p className="mx-4 mb-2 mt-3">Agenda: { new Date().toLocaleDateString("es-ES") } (día: { dayOfYear })</p>
         <div className="card border-dark mx-4 mb-3">
           <div className="card-header d-flex justify-content-end py-1">Hoy</div>
-            { movies.filter(movie => movie.DayID == dayOfYear).map((movie) => (<div key={movie.Title}>
+            { movies.filter(movie => movie.DayID == dayOfYear).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
                 <div className="row m-1">
                   <h3 className="card-text"><small><i className="fa-solid fa-clapperboard"/></small> {movie.Title}</h3>
                 </div>
@@ -134,13 +134,13 @@ function Home() {
                     <hr className="row m-1 pb-2"/>
                   </div>
                 </div>
-              </div>
+              </a>
               ))
             } 
           </div>
         <div className="card border-dark mx-4 transp">
           <div className="card-header d-flex justify-content-end py-1">Mañana</div>
-          { movies.filter(movie => movie.DayID == (dayOfYear+2)).map((movie) => (<div key={movie.Title}>
+          { movies.filter(movie => movie.DayID == (dayOfYear+2)).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
                 <div className="row m-1">
                   <h3 className="card-text"><small><i className="fa-solid fa-clapperboard"/></small> {movie.Title}</h3>
                 </div>
@@ -150,7 +150,7 @@ function Home() {
                     <hr className="row m-1 pb-2"/>
                   </div>
                 </div>
-              </div>
+              </a>
               ))
             }
       </div>

@@ -13,6 +13,7 @@ function Movies() {
   const [filter, setFilter] = useState(null);
   const [sections, setSections] = useState(null);
   const [filteredSections, setFilteredSections] = useState(null);
+  const [urlParam, setUrlParam] = useState(null);
 
   let filterMovies = (e) => {
     let text = e.target.value
@@ -61,16 +62,34 @@ function Movies() {
     getSections(data)
   }
 
+  let getUrlParams = () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.get('movie')) {
+      return urlParams.get('movie')
+    } else {}
+  }
+
+  let setUrlParams = (id) => {
+    if (id) {
+      setMovies(data.filter((movie) => movie.imdbID === id))
+      setUrlParam(id)
+    } else {
+      getAllMovies()
+    }
+  }
+
 useEffect(() => {  
   setTimeout(() => {
     getAllMovies()
     getSections(data)
+    setUrlParams(getUrlParams())
   }, "1000");
 }, []);
 
   return (
     <div><Nav />
-    <form className="d-flex m-3" role="search">
+    { !urlParam ? <form className="d-flex m-3" role="search">
         <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" onChange={filterMovies}/>
         { filter ? 
         <button className="btn btn-dark" type="submit">Borrar</button>
@@ -78,9 +97,18 @@ useEffect(() => {
         <div className="btn btn-dark" type="submit">Buscar</div>
         }
     </form>
+    :
+    <div></div>
+    }
+    
+    { !urlParam ?
     <div className="mx-2 mt-2 d-flex justify-content-evenly">
           { sections ? !filteredSections ? sections.map((section) => ( <span className="badge rounded-pill text-bg-dark mx-1 chip" onClick={filterSections} key={section} id={section}>{section}</span> )) : <span><small><i className="fa-solid fa-filter"></i></small> {filteredSections} <a href="?" className="badge rounded-pill text-bg-dark mx-1 chip">Ver todas las secciones</a></span> : <></>}
     </div>
+    :
+    <div></div>
+    }
+    
       { movies ? movies.length == '0' ? <div className="m-3"><span className="my-3">No hay resultados. <a href="?">Busca de nuevo.</a></span></div> : <></> : <></> }
     { movies ? 
       <div className="card-group m-3">
@@ -116,7 +144,8 @@ useEffect(() => {
           </p>
       </div>
       </div>
-    } 
+    }
+    { urlParam ? urlParam.length != '0' ? <div className="m-3 text-center"><span className="my-3"><a href="?">Ver todas las películas</a></span></div> : <></> : <></> }
     </div>
   );
 }

@@ -82,16 +82,16 @@ function Calendar() {
   return (
     <div><Nav />
     <span className="m-3"><i className="fa-solid fa-circle-info"></i> Today: { new Date().toLocaleDateString("es-ES") } ({ dayOfYear })</span>
-    <div className="mx-2 mt-2 d-flex justify-content-evenly">
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#one">D1</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#two">D2</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#three">D3</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#four">D4</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#five">D5</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#six">D6</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#seven">D7</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#eight">D8</a>
-    <a className="badge rounded-pill text-bg-dark mx-1 chip" href="#nine">D9</a>
+    <div className="mx-2 mt-2 d-flex flex-wrap justify-content-evenly">
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#one">Día <b>1</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#two">Día <b>2</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#three">Día <b>3</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#four">Día <b>4</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#five">Día <b>5</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#six">Día <b>6</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#seven">Día <b>7</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#eight">Día <b>8</b></a>
+    <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#nine">Día <b>9</b></a>
     </div>
     { !days ? 
   <div>
