@@ -4,6 +4,7 @@ import Login from './Components/Login'
 import Calendar from './Components/Calendar'
 import Movies from './Components/Movies'
 import Maps from './Components/Maps'
+import Voting from './Components/Voting'
 import Error from './Components/Error'
 
 import * as React from "react";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/voting",
+    element: <Voting />,
   },
 ]);
 

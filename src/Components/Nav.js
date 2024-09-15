@@ -40,7 +40,7 @@ function Nav() {
             <a className="nav-link" href="./calendar">Calendario</a>
             <a className="nav-link" href="./movies">Películas</a>
             <a className="nav-link" href="./maps">Mapas</a>
-            { user ? <p className="nav-link" onClick={logout}>Salir</p> : <a className="nav-link" href="./login">Login</a> }
+            { user ? <><a className="nav-link" href="./voting">Votar</a><p className="nav-link" onClick={logout}>Salir</p></> : <a className="nav-link" href="./login">Login</a> }
           </div>
         </div>
       </div>

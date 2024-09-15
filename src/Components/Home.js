@@ -2,6 +2,7 @@ import Nav from './Nav';
 import '../App.css';
 import Login from '../equipo.png'
 import Calendar from '../calendario.png'
+import Vote from '../voto.png'
 import Movies from '../cine.png'
 import Map from '../mapas.png'
 import Logout from '../power-off.png'
@@ -91,13 +92,13 @@ function Home() {
         </div>
         <div className="col">
         { user ? 
-          <div className="nav-link" onClick={logout}><div className="card">
-            <img src={Logout} className="img-fluid Home-Icon p-3" alt="..."></img>
+          <a className="nav-link" href="/voting"><div className="card">
+            <img src={Vote} className="img-fluid Home-Icon p-3" alt="..."></img>
             <div className="card-body p-0">
-              <small className="card-title">Salir</small>
+              <small className="card-title">Votar</small>
             </div>
           </div>
-          </div>
+          </a>
         : 
           <a className="nav-link" href="/login"><div className="card">
             <img src={Login} className="img-fluid Home-Icon p-2" alt="..."></img>

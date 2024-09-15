@@ -2,7 +2,7 @@ import Nav from './Nav';
 import '../App.css';
 import React, { useState, useEffect } from 'react';
 
-function Login() {
+function Voting() {
 
   const [user, setUser] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -40,7 +40,7 @@ function Login() {
   return (
     <div>
       <Nav />
-      <p className="m-3">Hola, {user ? user : 'inicia sesión para continuar:'}</p>
+      <p className="m-3 ">Hola, {user ? <><span>{user}</span><button type="submit" className="btn btn-danger mx-5" onClick={logout}>Desconectar</button></> : 'inicia sesión para continuar:'}</p>
       {
         !user ?
           <div className="m-3">
@@ -66,14 +66,12 @@ function Login() {
           </form>
           </div>
         :
-        <div className="m-3">
-          <p><a className="btn btn-dark" href="/">Inicio</a></p>
-          <p><a className="btn btn-dark" href="/voting">Mis votos</a></p>
-          <p><button type="submit" className="btn btn-danger" onClick={logout}>Desconectar</button></p>
+        <div>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true" width="100%" height="4968" frameborder="0" marginheight="0" marginwidth="0" title="voting">Cargando…</iframe>
         </div>
       }
         </div>
   );
 }
 
-export default Login;
+export default Voting;

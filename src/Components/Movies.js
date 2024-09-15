@@ -108,7 +108,7 @@ useEffect(() => {
     :
     <div></div>
     }
-    
+
       { movies ? movies.length == '0' ? <div className="m-3"><span className="my-3">No hay resultados. <a href="?">Busca de nuevo.</a></span></div> : <></> : <></> }
     { movies ? 
       <div className="card-group m-3">
@@ -124,7 +124,7 @@ useEffect(() => {
           <p className="card-text"><i className="fa-solid fa-clapperboard"></i> {movie.Director}</p>
           <p className="card-text">{movie.Day}</p>
           <p className="card-text">{movie.Time} ({movie.Runtime})</p>
-          <p className="card-text"><i className="fa-solid fa-school-flag"></i> {movie.Location}</p>
+          <a href={"/maps#"+movie.LocationID} className="card-text App-link"><i className="fa-solid fa-school-flag"></i> {movie.Location}</a>
           </div>
         </div>
         <div className="row m-1 pb-2">
