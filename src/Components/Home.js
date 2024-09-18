@@ -122,7 +122,7 @@ function Home() {
         </div>
       </div>
     : <div id="agenda">
-        <p className="mx-4 mb-2 mt-3">Agenda: { new Date().toLocaleDateString("es-ES") } (día: { dayOfYear })</p>
+        <p className="mx-4 mb-2 mt-3">Agenda del { new Date().toLocaleDateString("es-ES") }</p>
         <div className="card border-dark mx-4 mb-3">
           <div className="card-header d-flex justify-content-end py-1">Hoy</div>
             { movies.filter(movie => movie.DayID == dayOfYear).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">

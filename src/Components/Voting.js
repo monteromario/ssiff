@@ -1,5 +1,6 @@
 import Nav from './Nav';
 import '../App.css';
+import ico from '../ssiff.svg'
 import React, { useState, useEffect } from 'react';
 
 function Voting() {
@@ -40,7 +41,7 @@ function Voting() {
   return (
     <div>
       <Nav />
-      <p className="m-3 ">Hola, {user ? <><span>{user}</span><button type="submit" className="btn btn-danger mx-5" onClick={logout}>Desconectar</button></> : 'inicia sesión para continuar:'}</p>
+      <p className="m-3 ">{user ? <></> : 'Hola, inicia sesión para continuar:'}</p>
       {
         !user ?
           <div className="m-3">
@@ -67,7 +68,16 @@ function Voting() {
           </div>
         :
         <div>
+        <div>
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true" width="100%" height="6000" frameborder="0" marginheight="0" marginwidth="0" title="voting">Cargando…</iframe>
+        </div>
+        <nav className="navbar fixed-bottom bg-body-tertiary">
+  <div className="container-fluid">
+    <a className="navbar-brand mx-auto opacity-50" href="/">
+        <img src={ico} alt="Logo" width="" height="20" className=""></img>
+    </a>
+  </div>
+</nav>
         </div>
       }
         </div>
