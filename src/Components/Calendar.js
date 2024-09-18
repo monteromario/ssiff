@@ -81,7 +81,6 @@ function Calendar() {
 
   return (
     <div><Nav />
-    <span className="m-3"><i className="fa-solid fa-circle-info"></i> Today: { new Date().toLocaleDateString("es-ES") } ({ dayOfYear })</span>
     <div className="mx-2 mt-2 d-flex flex-wrap justify-content-evenly">
     <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#one">Día <b>1</b></a>
     <a className="badge rounded-pill text-bg-dark m-1 py-2 px-3 chip" href="#two">Día <b>2</b></a>

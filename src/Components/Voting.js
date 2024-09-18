@@ -67,7 +67,7 @@ function Voting() {
           </div>
         :
         <div>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true" width="100%" height="4968" frameborder="0" marginheight="0" marginwidth="0" title="voting">Cargando…</iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true" width="100%" height="6000" frameborder="0" marginheight="0" marginwidth="0" title="voting">Cargando…</iframe>
         </div>
       }
         </div>

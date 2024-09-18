@@ -54,8 +54,8 @@ function Home() {
         return 0;
     }));
     setDays(startDays);
-    //calculateDay();
-    setDayOfYear(1);
+    calculateDay();
+    //setDayOfYear(1);
     }, "1000");
   }, [])
 
