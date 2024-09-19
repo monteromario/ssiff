@@ -25,7 +25,7 @@ function Home() {
     var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
-    setDayOfYear(day);
+    setDayOfYear(263-day);
   }
 
   let logout = () => {
@@ -141,7 +141,7 @@ function Home() {
           </div>
         <div className="card border-dark mx-4 transp">
           <div className="card-header d-flex justify-content-end py-1">Mañana</div>
-          { movies.filter(movie => movie.DayID == (dayOfYear+2)).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
+          { movies.filter(movie => movie.DayID == (dayOfYear+1)).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
                 <div className="row m-1">
                   <h3 className="card-text"><small><i className="fa-solid fa-clapperboard"/></small> {movie.Title}</h3>
                 </div>

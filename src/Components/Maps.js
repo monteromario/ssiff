@@ -23,7 +23,7 @@ function Maps() {
           </div>
           <div className="m-5 d-flex justify-content-center">
               <p>
-                  <strong>loading contents</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
+                  <strong>cargando datos</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
               </p>
           </div>
           </div>
