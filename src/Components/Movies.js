@@ -30,7 +30,7 @@ function Movies() {
     if (text.length === 0) {
       getAllMovies()
     } else {
-      setMovies(movies.filter((movie) => movie.Section.toLowerCase().includes(text.toLowerCase())))
+      setMovies(movies.filter((movie) => movie.Section.toLowerCase(). includes(text.toLowerCase())))
       setFilteredSections(text)
     }
   }
