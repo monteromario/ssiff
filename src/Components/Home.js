@@ -25,7 +25,7 @@ function Home() {
     var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
-    setDayOfYear(day-263);
+    setDayOfYear(day-261);
   }
 
   let logout = () => {

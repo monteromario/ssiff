@@ -39,11 +39,11 @@ function Maps() {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Casa</h5>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5805.568157347127!2d-1.983820024096131!3d43.31877927111993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a5511bc590cb%3A0xcca9c564d3150bf4!2sGetaria%20Kalea%2C%206%2C%2020005%20Donostia%2C%20Gipuzkoa!5e0!3m2!1ses!2ses!4v1724178710000!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="kursaal"></iframe>
-              <p className="card-text"><small>Getaria Kalea, 6, 20005 Donostia, Gipuzkoa</small></p>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5805.1433316948!2d-1.974903065808898!3d43.323225299960356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a54296595b9d%3A0xab615c3549d91322!2sSegundo%20Izpizua%20Kalea%2C%2035%2C%2020001%20Donostia%2C%20Gipuzkoa!5e0!3m2!1ses!2ses!4v1758051332749!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="casa"></iframe>
+              <p className="card-text"><small>Segundo Izpizua Kalea, 35, 20001 Donostia</small></p>
             </div>
             <div className="card-footer text-center">
-              <small className="text-muted"><a href="https://www.google.es/maps/dir//Getaria+Kalea,+6,+20005+Donostia,+Gipuzkoa/@43.3187793,-1.98382,16z/data=!4m18!1m8!3m7!1s0xd51a5511bc590cb:0xcca9c564d3150bf4!2sGetaria+Kalea,+6,+20005+Donostia,+Gipuzkoa!3b1!8m2!3d43.3187793!4d-1.9812451!16s%2Fg%2F11bw44ky0k!4m8!1m0!1m5!1m1!1s0xd51a5511bc590cb:0xcca9c564d3150bf4!2m2!1d-1.9812451!2d43.3187793!3e3?entry=ttu" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame a casa</a></small>
+              <small className="text-muted"><a href="https://www.google.es/maps/dir//Segundo+Izpizua+Kalea,+35,+20001+Donostia,+Gipuzkoa/@43.3232253,-1.9749031,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0xd51a54296595b9d:0xab615c3549d91322!2m2!1d-1.9695226!2d43.3237035!3e0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame a casa</a></small>
             </div>
           </div>
           <div id="theatres"></div>
@@ -65,6 +65,26 @@ function Maps() {
             </div>
             <div className="card-footer text-center">
               <small className="text-muted"><a href="https://www.google.es/maps/dir//Teatro+Victoria+Eugenia,+Argentinar+Errepublika,+2,+20004+Donostia-San+Sebastian,+Gipuzkoa/@43.3227161,-1.9832394,16z/data=!4m17!1m7!3m6!1s0xd51a54fd1b59fe5:0x1b38bb4dc31105de!2sTeatro+Victoria+Eugenia!8m2!3d43.3227161!4d-1.9806645!16s%2Fg%2F1225dxdy!4m8!1m0!1m5!1m1!1s0xd51a54fd1b59fe5:0x1b38bb4dc31105de!2m2!1d-1.9807049!2d43.3226997!3e3?entry=ttu" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Victoria Eugenia</a></small>
+            </div>
+            </div>
+            <div className="card">
+            <div className="card-body" id="05">
+              <h5 className="card-title">Teatro Principal</h5>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.610290526019!2d-1.9882644240959593!3d43.322416871119636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a54d817cee5b%3A0x1085796893c80bcf!2sTeatro%20Principal!5e0!3m2!1ses!2ses!4v1758051664630!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="principal"></iframe>
+              <p className="card-text"><small>Kale Nagusia, 3, 20003 Donostia, Gipuzkoa</small></p>
+            </div>
+            <div className="card-footer text-center">
+              <small className="text-muted"><a href="https://www.google.es/maps/dir//Teatro+Principal,+Kale+Nagusia,+3,+20003+Donostia,+Gipuzkoa/@43.3224169,-1.9882644,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0xd51a54d817cee5b:0x1085796893c80bcf!2m2!1d-1.9856895!2d43.3224169!3e0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Principal</a></small>
+            </div>
+            </div>
+            <div className="card">
+            <div className="card-body" id="06">
+              <h5 className="card-title">Cines Antiguo Berri</h5>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5806.187843031515!2d-2.008102824096505!3d43.31229327112029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51b0755d1d53d9%3A0xf738308c683227bd!2sCines%20Antiguo%20Berri!5e0!3m2!1ses!2ses!4v1758051847203!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="berri"></iframe>
+              <p className="card-text"><small>Zarautz Kalea, 2, 20018 Donostia, Gipuzkoa</small></p>
+            </div>
+            <div className="card-footer text-center">
+              <small className="text-muted"><a href="https://www.google.es/maps/dir//Cines+Antiguo+Berri,+Zarautz+Kalea,+2,+20018+Donostia,+Gipuzkoa/@43.3122933,-2.0081028,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0xd51b0755d1d53d9:0xf738308c683227bd!2m2!1d-2.005558!2d43.3122137!3e0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame al Antiguo Berri</a></small>
             </div>
           </div>
           <div id="food"></div>
