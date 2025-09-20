@@ -24,7 +24,7 @@ function Calendar() {
   }
 
   let calculatePosition = (today) => {
-    switch (today-264) {
+    switch (today-262) {
       case 0:
           return 'one';
 
