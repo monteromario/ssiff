@@ -1,65 +1,65 @@
 [
   {
     "DayID": "01",
-    "DayName": "Viernes 19",
+    "DayName": "Viernes 18",
     "DayString": "one",
     "DayNum": "1",
-    "DayOfYear": "262"
+    "DayOfYear": "261"
   },
   {
     "DayID": "02",
-    "DayName": "Sábado 20",
+    "DayName": "Sábado 19",
     "DayString": "two",
     "DayNum": "2",
-    "DayOfYear": "263"
+    "DayOfYear": "262"
   },
   {
     "DayID": "03",
-    "DayName": "Domingo 21",
+    "DayName": "Domingo 20",
     "DayString": "three",
     "DayNum": "3",
-    "DayOfYear": "264"
+    "DayOfYear": "263"
   },
   {
     "DayID": "04",
-    "DayName": "Lunes 22",
+    "DayName": "Lunes 21",
     "DayString": "four",
     "DayNum": "4",
-    "DayOfYear": "265"
+    "DayOfYear": "264"
   },
   {
     "DayID": "05",
-    "DayName": "Martes 23",
+    "DayName": "Martes 22",
     "DayString": "five",
     "DayNum": "5",
-    "DayOfYear": "266"
+    "DayOfYear": "265"
   },
   {
     "DayID": "06",
-    "DayName": "Miércoles 24",
+    "DayName": "Miércoles 23",
     "DayString": "six",
     "DayNum": "6",
-    "DayOfYear": "267"
+    "DayOfYear": "266"
   },
   {
     "DayID": "07",
-    "DayName": "Jueves 25",
+    "DayName": "Jueves 24",
     "DayString": "seven",
     "DayNum": "7",
-    "DayOfYear": "268"
+    "DayOfYear": "267"
   },
   {
     "DayID": "08",
-    "DayName": "Viernes 26",
+    "DayName": "Viernes 25",
     "DayString": "eight",
     "DayNum": "8",
-    "DayOfYear": "269"
+    "DayOfYear": "268"
   },
   {
     "DayID": "09",
-    "DayName": "Sábado 27",
+    "DayName": "Sábado 26",
     "DayString": "nine",
     "DayNum": "9",
-    "DayOfYear": "270"
+    "DayOfYear": "269"
   }
   ]

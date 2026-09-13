@@ -39,11 +39,11 @@ function Maps() {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Casa</h5>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5805.1433316948!2d-1.974903065808898!3d43.323225299960356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a54296595b9d%3A0xab615c3549d91322!2sSegundo%20Izpizua%20Kalea%2C%2035%2C%2020001%20Donostia%2C%20Gipuzkoa!5e0!3m2!1ses!2ses!4v1758051332749!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="casa"></iframe>
-              <p className="card-text"><small>Segundo Izpizua Kalea, 35, 20001 Donostia</small></p>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d725.7136834985924!2d-1.985223030391569!3d43.31730029819501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51a5538c0a463d%3A0x76ce50e7e73484aa!2sC.%20de%20Arrasate%2C%2048%2C%2020005%20Donostia%20%2F%20San%20Sebasti%C3%A1n%2C%20Guip%C3%BAzcoa!5e0!3m2!1ses!2ses!4v1789285305969!5m2!1ses!2ses" width="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="casa"></iframe>
+              <p className="card-text"><small>C. de Arrasate, 48, 20005 Donostia</small></p>
             </div>
             <div className="card-footer text-center">
-              <small className="text-muted"><a href="https://www.google.es/maps/dir//Segundo+Izpizua+Kalea,+35,+20001+Donostia,+Gipuzkoa/@43.3232253,-1.9749031,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0xd51a54296595b9d:0xab615c3549d91322!2m2!1d-1.9695226!2d43.3237035!3e0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame a casa</a></small>
+              <small className="text-muted"><a href="https://www.google.com/maps/dir//C.+de+Arrasate,+48,+20005+Donostia+%2F+San+Sebasti%C3%A1n,+Guip%C3%BAzcoa/@43.3173003,-1.985223,19z/data=!4m18!1m8!3m7!1s0xd51a5538c0a463d:0x76ce50e7e73484aa!2sC.+de+Arrasate,+48,+20005+Donostia+%2F+San+Sebasti%C3%A1n,+Guip%C3%BAzcoa!3b1!8m2!3d43.3173003!4d-1.9845793!16s%2Fg%2F11bw44cs8r!4m8!1m0!1m5!1m1!1s0xd51a5538c0a463d:0x76ce50e7e73484aa!2m2!1d-1.9845793!2d43.3173003!3e0?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" className="App-link"><i className="fa-solid fa-diamond-turn-right"></i> Llévame a casa</a></small>
             </div>
           </div>
           <div id="theatres"></div>
