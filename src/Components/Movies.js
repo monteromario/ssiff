@@ -83,7 +83,10 @@ function Movies() {
 
             {movies.length > 0 ? (
               <section className="movie-grid">
-                {movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
+                {movies.map((movie) => {
+                  const movieKey = [movie.imdbID, movie.DayID, movie.Time, movie.LocationID].join('-');
+                  return <MovieCard key={movieKey} movie={movie} />;
+                })}
               </section>
             ) : (
               <section className="empty-state">
