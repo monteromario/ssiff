@@ -22,3 +22,18 @@ test('filtra películas desde el catálogo completo', () => {
   expect(screen.getByLabelText('1 película')).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Minotaur' })).toBeInTheDocument();
 });
+
+test('actualiza las tarjetas al cambiar entre resultados filtrados', () => {
+  window.history.pushState({}, '', '/movies');
+  render(<App />);
+
+  const search = screen.getByRole('searchbox', { name: /buscar películas/i });
+  fireEvent.change(search, { target: { value: 'premio' } });
+  expect(screen.getByLabelText('3 películas')).toBeInTheDocument();
+
+  fireEvent.change(search, { target: { value: 'público' } });
+
+  expect(screen.getByLabelText('1 película')).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Premio del público' })).toBeInTheDocument();
+  expect(screen.queryByRole('heading', { name: 'Premio de la juventud' })).not.toBeInTheDocument();
+});
