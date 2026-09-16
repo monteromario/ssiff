@@ -1,86 +1,40 @@
+import { Link } from 'react-router-dom';
+import Icon from './Icon';
 import Nav from './Nav';
-import '../App.css';
-import ico from '../ssiff.svg'
-import React, { useState, useEffect } from 'react';
 
 function Voting() {
-
-  const [user, setUser] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
-
-  let login = (e) => {
-    setLocalUser(selectedUser)
-  }
-
-  let logout = () => {
-    setUser(null)
-    setSelectedUser(null)
-    clearLocalUser()
-  }
-
-  let getLocalUser = () => {
-    return localStorage.getItem('SSIFFuser');
-  }
-
-  let clearLocalUser = () => {
-    localStorage.removeItem('SSIFFuser');
-  }
-
-  let setLocalUser = (e) => {
-    localStorage.setItem('SSIFFuser', e);
-  }
-
-  let handleSelection = (e) => {
-    setSelectedUser(e.target.value)
-  }
-
-  useEffect(() => {
-    setUser(getLocalUser())
-  }, [])
+  const user = window.localStorage.getItem('SSIFFuser');
 
   return (
-    <div>
+    <div className="app-shell">
       <Nav />
-      <p className="m-3 ">{user ? <></> : 'Hola, inicia sesión para continuar:'}</p>
-      {
-        !user ?
-          <div className="m-3">
-          <form onSubmit={login}>
-            <div className="mb-3">
-              <label htmlFor="user" className="form-label">Usuario</label>
-                <select id="user" className="form-select" defaultValue="" required onChange={handleSelection}>
-                  <option value=""> </option>
-                  <option id="Cristina H.">Cristina H.</option>
-                  <option id="Cristina S.">Cristina S.</option>
-                  <option id="Germán">Germán</option>
-                  <option id="Javier">Javier</option>
-                  <option id="Leire">Leire</option>
-                  <option id="Mario">Mario</option>
-                  <option id="Invitado">-- invitado --</option>
-          </select>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Contraseña</label>
-              <input type="password" className="form-control" id="password" autoComplete="password" required/>
-            </div>
-            <button type="submit" className="btn btn-dark">Acceder</button>
-          </form>
-          </div>
-        :
-        <div>
-        <div>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true" width="100%" height="6000" frameborder="0" marginheight="0" marginwidth="0" title="voting">Cargando…</iframe>
-        </div>
-        <nav className="navbar fixed-bottom bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand mx-auto opacity-50" href="/">
-        <img src={ico} alt="Logo" width="" height="20" className=""></img>
-    </a>
-  </div>
-</nav>
-        </div>
-      }
-        </div>
+      <main className="page voting-page">
+        {!user ? (
+          <section className="empty-state empty-state--large">
+            <span><Icon name="vote" size={30} /></span>
+            <h1>Accede para votar</h1>
+            <p>Necesitamos saber quién eres antes de mostrar tu formulario de votación.</p>
+            <Link className="button button--primary" to="/login">Iniciar sesión <Icon name="arrow" size={19} /></Link>
+          </section>
+        ) : (
+          <>
+            <header className="page-heading page-heading--compact">
+              <span className="section-kicker">PARTICIPA · {user.toUpperCase()}</span>
+              <h1>Mis votos</h1>
+              <p>Valora las películas que has visto durante el festival.</p>
+            </header>
+            <section className="voting-frame">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSf25Xq5h6BeVRpqF6n5AtLfS_QD-fPQXez2uD_nxKLhwUhTyg/viewform?embedded=true"
+                title="Formulario de votación"
+              >
+                Cargando…
+              </iframe>
+            </section>
+          </>
+        )}
+      </main>
+    </div>
   );
 }
 

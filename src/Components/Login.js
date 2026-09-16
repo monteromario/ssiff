@@ -1,78 +1,75 @@
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Icon from './Icon';
 import Nav from './Nav';
-import '../App.css';
-import React, { useState, useEffect } from 'react';
+
+const users = ['Cristina H.', 'Cristina S.', 'Germán', 'Javier', 'Leire', 'Mario', 'Invitado'];
 
 function Login() {
+  const [user, setUser] = useState(() => window.localStorage.getItem('SSIFFuser'));
+  const [selectedUser, setSelectedUser] = useState('');
+  const navigate = useNavigate();
 
-  const [user, setUser] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const login = (event) => {
+    event.preventDefault();
+    window.localStorage.setItem('SSIFFuser', selectedUser);
+    window.dispatchEvent(new Event('ssiff-user-change'));
+    setUser(selectedUser);
+    navigate('/voting');
+  };
 
-  let login = (e) => {
-    setLocalUser(selectedUser)
-  }
-
-  let logout = () => {
-    setUser(null)
-    setSelectedUser(null)
-    clearLocalUser()
-  }
-
-  let getLocalUser = () => {
-    return localStorage.getItem('SSIFFuser');
-  }
-
-  let clearLocalUser = () => {
-    localStorage.removeItem('SSIFFuser');
-  }
-
-  let setLocalUser = (e) => {
-    localStorage.setItem('SSIFFuser', e);
-  }
-
-  let handleSelection = (e) => {
-    setSelectedUser(e.target.value)
-  }
-
-  useEffect(() => {
-    setUser(getLocalUser())
-  }, [])
+  const logout = () => {
+    window.localStorage.removeItem('SSIFFuser');
+    window.dispatchEvent(new Event('ssiff-user-change'));
+    setUser(null);
+    setSelectedUser('');
+  };
 
   return (
-    <div>
+    <div className="app-shell auth-page-shell">
       <Nav />
-      <p className="m-3">Hola, {user ? user : 'inicia sesión para continuar:'}</p>
-      {
-        !user ?
-          <div className="m-3">
-          <form onSubmit={login}>
-            <div className="mb-3">
-              <label htmlFor="user" className="form-label">Usuario</label>
-                <select id="user" className="form-select" defaultValue="" required onChange={handleSelection}>
-                  <option value=""> </option>
-                  <option id="Cristina H.">Cristina H.</option>
-                  <option id="Cristina S.">Cristina S.</option>
-                  <option id="Germán">Germán</option>
-                  <option id="Javier">Javier</option>
-                  <option id="Leire">Leire</option>
-                  <option id="Mario">Mario</option>
-                  <option id="Invitado">-- invitado --</option>
-          </select>
+      <main className="page auth-page">
+        <section className="auth-intro">
+          <span className="auth-intro__icon"><Icon name="spark" size={28} /></span>
+          <span className="section-kicker">TU ESPACIO SSIFF</span>
+          <h1>{user ? `Hola, ${user}` : 'Entra y participa'}</h1>
+          <p>{user ? 'Tu sesión está activa. Ya puedes acceder a la votación del festival.' : 'Identifícate para guardar y enviar tus votos.'}</p>
+        </section>
+
+        <section className="auth-card">
+          {!user ? (
+            <form onSubmit={login}>
+              <label className="form-field" htmlFor="user">
+                <span>Usuario</span>
+                <select id="user" required value={selectedUser} onChange={(event) => setSelectedUser(event.target.value)}>
+                  <option value="" disabled>Selecciona tu usuario</option>
+                  {users.map((name) => <option key={name} value={name}>{name === 'Invitado' ? '— Invitado —' : name}</option>)}
+                </select>
+              </label>
+              <label className="form-field" htmlFor="password">
+                <span>Contraseña</span>
+                <input id="password" type="password" autoComplete="current-password" placeholder="Tu contraseña" required />
+              </label>
+              <button className="button button--primary button--full" type="submit">
+                Acceder <Icon name="arrow" size={19} />
+              </button>
+              <p className="form-note">El acceso está reservado al grupo del festival.</p>
+            </form>
+          ) : (
+            <div className="profile-card">
+              <span className="profile-card__avatar">{user.charAt(0).toUpperCase()}</span>
+              <div><small>SESIÓN ACTIVA</small><strong>{user}</strong></div>
+              <Link className="button button--primary button--full" to="/voting">
+                Ir a mis votos <Icon name="arrow" size={19} />
+              </Link>
+              <button className="button button--quiet button--full" onClick={logout} type="button">
+                <Icon name="logout" size={18} /> Cerrar sesión
+              </button>
             </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Contraseña</label>
-              <input type="password" className="form-control" id="password" autoComplete="password" required/>
-            </div>
-            <button type="submit" className="btn btn-dark">Acceder</button>
-          </form>
-          </div>
-        :
-        <div className="m-3">
-          <p><a className="btn btn-dark" href="/">Inicio</a></p>
-          <p><a className="btn btn-dark" href="/voting">Mis votos</a></p>
-          <p><button type="submit" className="btn btn-danger" onClick={logout}>Desconectar</button></p>
-        </div>
-      }
-        </div>
+          )}
+        </section>
+      </main>
+    </div>
   );
 }
 

@@ -1,162 +1,98 @@
+import { Link } from 'react-router-dom';
+import data from '../data.json';
+import festivalDays from '../days.json';
+import Icon from './Icon';
 import Nav from './Nav';
-import '../App.css';
-import Login from '../equipo.png'
-import Calendar from '../calendario.png'
-import Vote from '../voto.png'
-import Movies from '../cine.png'
-import Map from '../mapas.png'
-import Logout from '../power-off.png'
-import data from '../data.json'
-import startDays from '../days.json'
-import spinner from '../spinner.svg'
-import dots from '../dots.svg'
-import React, { useState, useEffect } from 'react';
+
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const difference = date - start + (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000;
+  return Math.floor(difference / 86400000);
+}
 
 function Home() {
-
-  const [user, setUser] = useState(null);
-  const [movies, setMovies] = useState(null);
-  const [days, setDays] = useState(null);
-  const [dayOfYear, setDayOfYear] = useState(null);
-
-  let calculateDay = () => {
-    var now = new Date();
-    var start = new Date(now.getFullYear(), 0, 0);
-    var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-    var oneDay = 1000 * 60 * 60 * 24;
-    var day = Math.floor(diff / oneDay);
-    setDayOfYear(day-261);
-  }
-
-  let logout = () => {
-    setUser(null)
-    clearLocalUser()
-  }
-
-  let getLocalUser = () => {
-    return localStorage.getItem('SSIFFuser');
-  }
-
-  let clearLocalUser = () => {
-    localStorage.removeItem('SSIFFuser');
-  }
-
-  useEffect(() => {
-    setUser(getLocalUser())
-    setTimeout(() => {
-      setMovies(data.sort(function(a, b){
-        if (a.Time < b.Time) {
-          return -1;
-        }
-        if (a.Time > b.Time) {
-          return 1;
-        }
-        return 0;
-    }));
-    setDays(startDays);
-    calculateDay();
-    //setDayOfYear(1);
-    }, "1000");
-  }, [])
-
+  const today = dayOfYear(new Date());
+  const activeDay = festivalDays.find((day) => Number(day.DayOfYear) === today);
+  const nextDay = festivalDays.find((day) => Number(day.DayOfYear) >= today);
+  const featuredDay = activeDay || nextDay || festivalDays[0];
+  const sessions = data
+    .filter((movie) => movie.DayID === featuredDay.DayID)
+    .sort((a, b) => a.Time.localeCompare(b.Time));
+  const locationCount = new Set(data.map((movie) => movie.LocationID)).size;
 
   return (
-    <div><Nav />
-    <div className="row row-cols-4 row-cols-md-4 g-2 mx-3 my-2 text-center">
-        <div className="col">
-        <a className="nav-link" href="/calendar"><div className="card">
-            <img src={Calendar} className="card-img-top p-2" alt="..."></img>
-            <div className="card-body p-0">
-              <small className="card-title">Calendario</small>
+    <div className="app-shell">
+      <Nav />
+      <main className="page home-page">
+        <section className="hero">
+          <div className="hero__content">
+            <div className="eyebrow"><span /> 18—26 septiembre · Donostia</div>
+            <h1>Tu festival,<br /><em>bajo control.</em></h1>
+            <p>Películas, horarios y salas en una guía sencilla para disfrutar del SSIFF sin perderte nada.</p>
+            <div className="hero__actions">
+              <Link className="button button--primary" to="/calendar">
+                Ver agenda <Icon name="arrow" size={19} />
+              </Link>
+              <Link className="button button--ghost" to="/movies">Explorar películas</Link>
             </div>
           </div>
-            </a>
-        </div>
-        <div className="col">
-        <a className="nav-link" href="/movies"><div className="card">
-            <img src={Movies} className="card-img-top p-2" alt="..."></img>
-            <div className="card-body p-0">
-              <small className="card-title">Películas</small>
+          <div className="hero__visual" aria-hidden="true">
+            <div className="festival-card">
+              <span className="festival-card__edition">74</span>
+              <span className="festival-card__label">edición</span>
+              <div className="festival-card__dates">18 — 26<br />09 · 2026</div>
+              <div className="festival-card__city">SAN SEBASTIÁN</div>
             </div>
+            <div className="hero__disc hero__disc--one" />
+            <div className="hero__disc hero__disc--two" />
           </div>
-            </a>
-        </div>
-        <div className="col">
-        <a className="nav-link" href="/maps"><div className="card">
-            <img src={Map} className="card-img-top p-2" alt="..."></img>
-            <div className="card-body p-0">
-              <small className="card-title">Mapas</small>
+        </section>
+
+        <section className="festival-stats" aria-label="Datos del festival">
+          <div><strong>{data.length}</strong><span>películas</span></div>
+          <div><strong>{festivalDays.length}</strong><span>días</span></div>
+          <div><strong>{locationCount}</strong><span>salas</span></div>
+        </section>
+
+        <section className="section-block">
+          <div className="section-heading">
+            <div>
+              <span className="section-kicker">EN CARTELERA</span>
+              <h2>{activeDay ? 'La agenda de hoy' : `Próximo: ${featuredDay.DayName}`}</h2>
             </div>
+            <Link className="text-link" to={`/calendar#${featuredDay.DayString}`}>
+              Ver día completo <Icon name="arrow" size={17} />
+            </Link>
           </div>
-            </a>
-        </div>
-        <div className="col">
-        { user ? 
-          <a className="nav-link" href="/voting"><div className="card">
-            <img src={Vote} className="img-fluid Home-Icon p-3" alt="..."></img>
-            <div className="card-body p-0">
-              <small className="card-title">Votar</small>
-            </div>
+
+          <div className="session-list">
+            {sessions.slice(0, 4).map((movie) => (
+              <Link className="session-row" key={movie.imdbID} to={`/movies?movie=${movie.imdbID}`}>
+                <span className="session-row__time">{movie.Time}</span>
+                <span className="session-row__body">
+                  <strong>{movie.Title}</strong>
+                  <span><Icon name="location" size={15} /> {movie.Location} · {movie.Runtime}</span>
+                </span>
+                <span className="session-row__section">{movie.Section}</span>
+                <Icon className="session-row__arrow" name="chevron" size={19} />
+              </Link>
+            ))}
           </div>
-          </a>
-        : 
-          <a className="nav-link" href="/login"><div className="card">
-            <img src={Login} className="img-fluid Home-Icon p-2" alt="..."></img>
-            <div className="card-body p-0">
-              <small className="card-title">Login</small>
-            </div>
-          </div>
-          </a>
-        }
-        </div>
-      </div>
-    { !days ? 
-      <div>
-        <div className="m-5 d-flex justify-content-center">
-        <img src={spinner} className="App-spinner" alt="loading"/>
-        </div>
-        <div className="m-5 d-flex justify-content-center">
-            <p>
-                <strong>cargando datos</strong><span className="m-1 align-bottom"><img src={dots} className="" alt="loading" /></span>
-            </p>
-        </div>
-      </div>
-    : <div id="agenda">
-        <p className="mx-4 mb-2 mt-3">Agenda del { new Date().toLocaleDateString("es-ES") }</p>
-        <div className="card border-dark mx-4 mb-3">
-          <div className="card-header d-flex justify-content-end py-1">Hoy</div>
-            { movies.filter(movie => movie.DayID == dayOfYear).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
-                <div className="row m-1">
-                  <h3 className="card-text"><small><i className="fa-solid fa-clapperboard"/></small> {movie.Title}</h3>
-                </div>
-                <div className="row m-1">
-                  <div className="col-8 lh-1 w-100">
-                    <p className="card-text"><i className="fa-solid fa-school-flag"></i> {movie.Location} ({movie.Time}h)</p>
-                    <hr className="row m-1 pb-2"/>
-                  </div>
-                </div>
-              </a>
-              ))
-            } 
-          </div>
-        <div className="card border-dark mx-4 transp">
-          <div className="card-header d-flex justify-content-end py-1">Mañana</div>
-          { movies.filter(movie => movie.DayID == (dayOfYear+1)).map((movie) => (<a key={movie.Title} href={"/movies?movie="+movie.imdbID} className="App-link">
-                <div className="row m-1">
-                  <h3 className="card-text"><small><i className="fa-solid fa-clapperboard"/></small> {movie.Title}</h3>
-                </div>
-                <div className="row m-1">
-                  <div className="col-8 lh-1 w-100">
-                    <p className="card-text"><i className="fa-solid fa-school-flag"></i> {movie.Location} ({movie.Time}h)</p>
-                    <hr className="row m-1 pb-2"/>
-                  </div>
-                </div>
-              </a>
-              ))
-            }
-      </div>
-      </div>
-     }
+        </section>
+
+        <section className="quick-grid" aria-label="Accesos rápidos">
+          <Link className="quick-card quick-card--dark" to="/maps">
+            <span className="quick-card__icon"><Icon name="map" size={24} /></span>
+            <span><small>MUÉVETE POR DONOSTIA</small><strong>Salas y lugares</strong></span>
+            <Icon name="arrow" size={22} />
+          </Link>
+          <Link className="quick-card quick-card--accent" to="/login">
+            <span className="quick-card__icon"><Icon name="vote" size={24} /></span>
+            <span><small>HAZ TU ELECCIÓN</small><strong>Accede y vota</strong></span>
+            <Icon name="arrow" size={22} />
+          </Link>
+        </section>
+      </main>
     </div>
   );
 }
